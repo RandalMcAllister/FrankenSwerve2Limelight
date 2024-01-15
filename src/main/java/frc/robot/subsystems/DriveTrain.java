@@ -118,7 +118,7 @@ public class DriveTrain extends SubsystemBase {
     double xSpeedDelivered = xSpeedCommanded * DriveConstants.kMaxSpeed;
     double ySpeedDelivered = ySpeedCommanded * DriveConstants.kMaxSpeed;
     double rotDelivered = m_currentRotation * DriveConstants.kMaxAngularSpeed;
-    System.out.printf("Field %b, x=%f, y=%f, rot=%f\n", fieldRelative, xSpeed, ySpeed, zRot);
+    //System.out.printf("Field %b, x=%f, y=%f, rot=%f\n", fieldRelative, xSpeed, ySpeed, zRot);
 
     var swerveModuleStates = m_kinematics.toSwerveModuleStates(
         fieldRelative
@@ -129,7 +129,8 @@ public class DriveTrain extends SubsystemBase {
     m_frontLeft.setDesiredState(swerveModuleStates[0]);
     m_frontRight.setDesiredState(swerveModuleStates[1]);
     m_backLeft.setDesiredState(swerveModuleStates[2]);
-    m_backRight.setDesiredState(swerveModuleStates[3]);         
+    m_backRight.setDesiredState(swerveModuleStates[3]);   
+    //System.out.printf("Module state 0 %f", swerveModuleStates[0].angle.getRadians());
   }
     
   public void resetEncoders() {

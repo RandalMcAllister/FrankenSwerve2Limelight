@@ -130,21 +130,21 @@ public class SwerveModule extends SubsystemBase {
    * @param desiredState Desired state with speed and angle.
    */
   public void setDesiredState(SwerveModuleState desiredState) {
-    /**
+    
     // Scale speed by cosine of angle error. This scales down movement perpendicular to the desired
     // direction of travel that can occur when modules change directions. This results in smoother
     // driving.
-    state.speedMetersPerSecond *= state.angle.minus(encoderRotation).getCos();
+    //state.speedMetersPerSecond *= state.angle.minus(encoderRotation).getCos();
     
     //final double driveFeedforward = m_driveFeedforward.calculate(state.speedMetersPerSecond);
 
-    final double driveOutput  = m_drivePIDController.calculate(m_driveEncoder.getVelocity(), state.speedMetersPerSecond);
-    final double turnFeedforward = m_turnFeedforward.calculate(m_turningPIDController.getSetpoint());
+    //final double driveOutput  = m_drivePIDController.calculate(m_driveEncoder.getVelocity(), state.speedMetersPerSecond);
+    //final double turnFeedforward = m_turnFeedforward.calculate(m_turningPIDController.getSetpoint());
 
 
     // Calculate the turning motor output from the turning PID controller.
-    m_driveMotor.set(driveOutput);
-    */
+    //m_driveMotor.set(driveOutput);
+    
 
     SwerveModuleState correctedDesiredState = new SwerveModuleState();
     correctedDesiredState.speedMetersPerSecond = desiredState.speedMetersPerSecond;
@@ -164,12 +164,16 @@ public class SwerveModule extends SubsystemBase {
 
     // Command driving and turning SPARKS MAX towards their respective setpoints.
     m_drivePIDController.setReference(optimizedDesiredState.speedMetersPerSecond, CANSparkMax.ControlType.kVelocity);
-   // m_turningPIDController.setReference(optimizedDesiredState.angle.getRadians(), CANSparkMax.ControlType.kPosition);
-   final double turnFeedforward =
+    // m_turningPIDController.setReference(optimizedDesiredState.angle.getRadians(), CANSparkMax.ControlType.kPosition);
+    final double turnFeedforward =
         m_turnFeedforward.calculate(m_turningPIDController.getSetpoint()); 
-   
+        
     m_turningMotor.set(turnOutput + turnFeedforward);
-    
+    //System.out.printf("Turning Motor Output %f\n", turnOutput);
+    //System.out.printf("Distance %f\n", m_turningEncoder.getDistance());
+    //System.out.printf("Angle %f\n", correctedDesiredState.angle.getRadians());
+    //System.out.printf("Turning Motor Feedforward %f\n", turnFeedforward);
+
     m_desiredState = desiredState;
 
     

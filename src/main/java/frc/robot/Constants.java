@@ -45,10 +45,10 @@ public final class Constants {
     public static final double kMaxAngularSpeed = Math.PI; // 1/2 rotation per second
     public static final double kDriveDeadband = 0.05;
 
-    public static final double kFrontLeftChassisAngularOffset = -Math.PI / 2;
+    public static final double kFrontLeftChassisAngularOffset = 0;
     public static final double kFrontRightChassisAngularOffset = 0;
-    public static final double kBackLeftChassisAngularOffset = Math.PI;
-    public static final double kBackRightChassisAngularOffset = Math.PI / 2;
+    public static final double kBackLeftChassisAngularOffset = 0;
+    public static final double kBackRightChassisAngularOffset = 0;
 
   }
 
@@ -62,14 +62,14 @@ public final class Constants {
     public static final int kRightFrontTurn = 7;
     public static final int kRightBackTurn = 8;
 
-    public static final int kLFturnA = 0;
-    public static final int kLFturnB = 1;
-    public static final int kLBturnA = 4;
-    public static final int kLBturnB = 5;
-    public static final int kRFturnA = 2;
-    public static final int kRFturnB = 3;
-    public static final int kRBturnA = 6;
-    public static final int kRBturnB = 7;
+    public static final int kLFturnA = 2;
+    public static final int kLFturnB = 3;
+    public static final int kLBturnA = 0;
+    public static final int kLBturnB = 1;
+    public static final int kRFturnA = 6;
+    public static final int kRFturnB = 7;
+    public static final int kRBturnA = 4;
+    public static final int kRBturnB = 5;
   }
 
   public static class AutoConstants {}
