@@ -171,11 +171,11 @@ public class SwerveModule extends SubsystemBase {
         
     m_turningMotor.set(turnOutput + turnFeedforward);
 
-    if ((turnFeedforward + turnOutput + optimizedDesiredState.speedMetersPerSecond) != 0.0) //reduce debugging output
+    /**if ((turnFeedforward + turnOutput + optimizedDesiredState.speedMetersPerSecond) != 0.0) //reduce debugging output
     {
       System.out.printf("%d: %f %f\n", m_driveMotorChannel, turnFeedforward + turnOutput, optimizedDesiredState.speedMetersPerSecond);
       if (m_driveMotorChannel == 4) {System.out.printf("\n");} //add line after last motor
-    }
+    }*/
     //System.out.printf("Distance %f\n", m_turningEncoder.getDistance());
     //System.out.printf("Angle %f\n", correctedDesiredState.angle.getRadians());
     //System.out.printf("Turning Motor Feedforward %f\n", turnFeedforward);

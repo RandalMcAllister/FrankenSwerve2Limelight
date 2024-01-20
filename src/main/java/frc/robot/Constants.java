@@ -21,7 +21,7 @@ public final class Constants {
   
   public static class SwerveConstants{
     public static final double kWheelRadius = 0.05845; //Need to update
-    public static final int kAngleEncoderResolution = 7; //see https://www.andymark.com/products/hall-effect-two-channel-encoder
+    public static final int kAngleEncoderResolution = 400; //see https://www.andymark.com/products/hall-effect-two-channel-encoder
     public static final int kDriveEncoderResolution = 4096; // neo brushless settings in rev can id setting
   
     public static final double kModuleMaxAngularVelocity = DriveConstants.kMaxAngularSpeed;
@@ -53,14 +53,14 @@ public final class Constants {
   }
 
   public static class ControlSystem {
-    public static final int kLeftFrontDrive = 1;
-    public static final int kLeftBackDrive = 2;
-    public static final int kRightFrontDrive = 3;
-    public static final int kRightBackDrive = 4;
-    public static final int kLeftFrontTurn = 5;
-    public static final int kLeftBackTurn = 6;
-    public static final int kRightFrontTurn = 7;
-    public static final int kRightBackTurn = 8;
+    public static final int kLeftFrontDrive = 2;
+    public static final int kLeftBackDrive = 4;
+    public static final int kRightFrontDrive = 1;
+    public static final int kRightBackDrive = 3;
+    public static final int kLeftFrontTurn = 6;
+    public static final int kLeftBackTurn = 8;
+    public static final int kRightFrontTurn = 5;
+    public static final int kRightBackTurn = 7;
 
     public static final int kLFturnA = 2;
     public static final int kLFturnB = 3;

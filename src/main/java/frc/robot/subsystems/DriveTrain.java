@@ -10,6 +10,8 @@ import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.ControlSystem;
 import com.revrobotics.RelativeEncoder;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
@@ -76,6 +78,10 @@ public class DriveTrain extends SubsystemBase {
  /** Creates a new Drive Train Subsystem. */
   public DriveTrain() {
     m_imu.reset();
+    m_frontLeft.resetEncoders();
+    m_frontRight.resetEncoders();
+    m_backLeft.resetEncoders();
+    m_backRight.resetEncoders();
   }
 
 
@@ -91,6 +97,22 @@ public class DriveTrain extends SubsystemBase {
             m_backLeft.getPosition(),
             m_backRight.getPosition()
         });
+
+    // Put values to SmartDashboard 
+    SmartDashboard.putNumber("Front Left Drive Speed", DriveVelFL());
+    SmartDashboard.putNumber("Front Right Drive Speed", DriveVelFR());
+    SmartDashboard.putNumber("Back Left Drive Speed", DriveVelBL());
+    SmartDashboard.putNumber("Back Right Drive Speed", DriveVelBR());
+
+    //Display Odometry IMU angle
+    SmartDashboard.putNumber("Odometry Angle", getOdometryAngle());
+    
+    //Display Kinematics
+    SmartDashboard.putNumber("Front Left Encoder Count", TurnCountFL());
+    SmartDashboard.putNumber("Back Left Encoder Count", TurnCountBL());
+    SmartDashboard.putNumber("Front Right Encoder Count", TurnCountFR());
+    SmartDashboard.putNumber("Back Right Encoder Count", TurnCountBR());
+
   }
 
   public final double getOdometryAngle()
@@ -141,7 +163,22 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public double TurnCountFR() {
+    double turningOut = m_frontRight.TurnOutput();
+    return turningOut;
+  }
+
+  public double TurnCountFL() {
+    double turningOut = m_frontLeft.TurnOutput();
+    return turningOut;
+  }
+
+  public double TurnCountBR() {
     double turningOut = m_backRight.TurnOutput();
+    return turningOut;
+  }
+
+  public double TurnCountBL() {
+    double turningOut = m_backLeft.TurnOutput();
     return turningOut;
   }
 

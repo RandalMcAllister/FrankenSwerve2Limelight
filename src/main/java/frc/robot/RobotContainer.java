@@ -78,15 +78,7 @@ public class RobotContainer {
     SmartDashboard.putNumber("Joystick Raw X", m_driverJoystick.getX());
     SmartDashboard.putNumber("Joystick Raw Y", m_driverJoystick.getY());
     SmartDashboard.putNumber("Joystick Raw Z", m_driverJoystick.getZ());
-    //Display Odometry IMU angle
-    SmartDashboard.putNumber("Odometry Angle", m_robotDrive.getOdometryAngle());
-    //DIsplay Kinematics
-    SmartDashboard.putNumber("Front Right Encoder Count", m_robotDrive.TurnCountFR());
-
-    SmartDashboard.putNumber("Front Left Drive Speed", m_robotDrive.DriveVelFL());
-    SmartDashboard.putNumber("Front Right Drive Speed", m_robotDrive.DriveVelFR());
-    SmartDashboard.putNumber("Back Left Drive Speed", m_robotDrive.DriveVelBL());
-    SmartDashboard.putNumber("Back Right Drive Speed", m_robotDrive.DriveVelBR());
+        
 
     // Starts recording to data log
     DataLogManager.start();
