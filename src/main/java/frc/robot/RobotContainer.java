@@ -27,6 +27,8 @@ import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.DataLogManager;
+import edu.wpi.first.wpilibj.DriverStation;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.ControlSystem;
@@ -85,6 +87,13 @@ public class RobotContainer {
     SmartDashboard.putNumber("Front Right Drive Speed", m_robotDrive.DriveVelFR());
     SmartDashboard.putNumber("Back Left Drive Speed", m_robotDrive.DriveVelBL());
     SmartDashboard.putNumber("Back Right Drive Speed", m_robotDrive.DriveVelBR());
+
+    // Starts recording to data log
+    DataLogManager.start();
+
+    // Record both DS control and joystick data
+    DriverStation.startDataLog(DataLogManager.getLog());
+
 
     // Configure the trigger bindings
     configureBindings();

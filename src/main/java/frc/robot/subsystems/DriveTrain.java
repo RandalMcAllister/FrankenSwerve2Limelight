@@ -118,7 +118,7 @@ public class DriveTrain extends SubsystemBase {
     double xSpeedDelivered = xSpeedCommanded * DriveConstants.kMaxSpeed;
     double ySpeedDelivered = ySpeedCommanded * DriveConstants.kMaxSpeed;
     double rotDelivered = m_currentRotation * DriveConstants.kMaxAngularSpeed;
-    //System.out.printf("Field %b, x=%f, y=%f, rot=%f\n", fieldRelative, xSpeed, ySpeed, zRot);
+    if(xSpeed + ySpeed != 0) {System.out.printf("Field %b, x=%f, y=%f, rot=%f\n", fieldRelative, xSpeed, ySpeed, zRot);}
 
     var swerveModuleStates = m_kinematics.toSwerveModuleStates(
         fieldRelative

@@ -37,6 +37,8 @@ public class SwerveModule extends SubsystemBase {
 
   private final SparkMaxPIDController m_drivePIDController;
 
+  private int m_driveMotorChannel; //for debugging
+
   //public static final CANSparkMaxLowLevel.MotorType kBrushless;
 
   private final PIDController m_turningPIDController = new PIDController(1, 1, 1);
@@ -65,6 +67,7 @@ public class SwerveModule extends SubsystemBase {
     double chassisAngularOffset) {
 
     m_driveMotor = new CANSparkMax(driveMotorChannel, MotorType.kBrushless);
+    m_driveMotorChannel = driveMotorChannel; //for debugging
     m_turningMotor = new WPI_VictorSPX(turningMotorChannel);
 
     m_driveMotor.restoreFactoryDefaults();
@@ -169,7 +172,12 @@ public class SwerveModule extends SubsystemBase {
         m_turnFeedforward.calculate(m_turningPIDController.getSetpoint()); 
         
     m_turningMotor.set(turnOutput + turnFeedforward);
-    //System.out.printf("Turning Motor Output %f\n", turnOutput);
+
+    if ((turnFeedforward + turnOutput + optimizedDesiredState.speedMetersPerSecond) != 0.0) //reduce debugging output
+    {
+      System.out.printf("%d: %f %f\n", m_driveMotorChannel, turnFeedforward + turnOutput, optimizedDesiredState.speedMetersPerSecond);
+      if (m_driveMotorChannel == 4) {System.out.printf("\n");} //add line after last motor
+    }
     //System.out.printf("Distance %f\n", m_turningEncoder.getDistance());
     //System.out.printf("Angle %f\n", correctedDesiredState.angle.getRadians());
     //System.out.printf("Turning Motor Feedforward %f\n", turnFeedforward);
