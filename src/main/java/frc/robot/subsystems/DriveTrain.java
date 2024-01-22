@@ -140,7 +140,12 @@ public class DriveTrain extends SubsystemBase {
     double xSpeedDelivered = xSpeedCommanded * DriveConstants.kMaxSpeed;
     double ySpeedDelivered = ySpeedCommanded * DriveConstants.kMaxSpeed;
     double rotDelivered = m_currentRotation * DriveConstants.kMaxAngularSpeed;
-    if(xSpeed + ySpeed != 0) {System.out.printf("Field %b, x=%f, y=%f, rot=%f\n", fieldRelative, xSpeed, ySpeed, zRot);}
+
+    SmartDashboard.putNumber("X Speed", xSpeed);
+    SmartDashboard.putNumber("Y Speed", ySpeed);
+    SmartDashboard.putNumber("Z Rot ", zRot);
+    SmartDashboard.putBoolean("Field Relative ", fieldRelative);
+   // if(xSpeed + ySpeed != 0) {System.out.printf("Field %b, x=%f, y=%f, rot=%f\n", fieldRelative, xSpeed, ySpeed, zRot);}
 
     var swerveModuleStates = m_kinematics.toSwerveModuleStates(
         fieldRelative
@@ -200,6 +205,20 @@ public class DriveTrain extends SubsystemBase {
   public double DriveVelBR() {
     double driveVelBR = m_backRight.DriveOutput();
     return driveVelBR;
+  }
+
+  public void DriveForward() {
+    m_backLeft.DriveForward();
+    m_frontLeft.DriveForward();
+    m_backRight.DriveForward();
+    m_frontRight.DriveForward();
+  }
+
+  public void DriveStop() {
+    m_backLeft.DriveStop();
+    m_frontLeft.DriveStop();
+    m_backRight.DriveStop();
+    m_frontRight.DriveStop();
   }
 
   /**

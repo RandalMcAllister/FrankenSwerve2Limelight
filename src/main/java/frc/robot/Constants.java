@@ -36,9 +36,9 @@ public final class Constants {
         / kDrivingMotorReduction; // meters
     public static final double kDrivingEncoderVelocityFactor = ((kWheelDiameterMeters * Math.PI)
         / kDrivingMotorReduction) / 60.0; // meters per second    
-    public static final int driveGainP = 1;
-    public static final int driveGainI = 0;
-    public static final int driveGainD = 0;
+    public static final double driveGainP = 0.1;
+    public static final double driveGainI = 0;
+    public static final double driveGainD = 0;
   }
 
   public static class DriveConstants {

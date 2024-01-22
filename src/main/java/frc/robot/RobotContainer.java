@@ -6,6 +6,8 @@ package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
+import frc.robot.commands.DriveForward;
+import frc.robot.commands.TurnBot;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.SwerveModule;
@@ -55,10 +57,16 @@ public class RobotContainer {
   private final DriveTrain m_robotDrive = new DriveTrain();
   private final ExampleSubsystem m_example = new ExampleSubsystem(); 
 
-  // Replace with CommandPS4Controller or CommandJoystick if needed
-  private final CommandJoystick m_driverJoystick =
-      new CommandJoystick(OperatorConstants.kDriverControllerPort);
+  private final DriveForward m_driveForward = new DriveForward(m_robotDrive);
+  private final TurnBot m_turnBot = new TurnBot(m_robotDrive);
 
+  // Replace with CommandPS4Controller or CommandJoystick if needed
+  private final Joystick m_driverJoystick =
+      new Joystick(OperatorConstants.kDriverControllerPort);
+
+  private final JoystickButton driveForward = new JoystickButton(m_driverJoystick, 11);
+  private final JoystickButton turnBot = new JoystickButton(m_driverJoystick, 9
+  );
 
   
   //private final RelativeEncoder m_FLDE = m_FLDMax.getEncoder();
@@ -68,16 +76,8 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure data on the SmartDashboard
-  
-    //SmartDashboard.putData(CommandScheduler.getInstance());
     double counter = 0.0; SmartDashboard.putNumber("Counter", counter++);
-    //SmartDashboard.putNumber("Front Left Speed", FrontLeftDriveEncoder);
-    SmartDashboard.putNumber("Joystick X", -MathUtil.applyDeadband(m_driverJoystick.getX(), DriveConstants.kDriveDeadband));
-    SmartDashboard.putNumber("Joystick Y", -MathUtil.applyDeadband(m_driverJoystick.getY(), DriveConstants.kDriveDeadband));
-    SmartDashboard.putNumber("Joystick Z", -MathUtil.applyDeadband(m_driverJoystick.getZ(), DriveConstants.kDriveDeadband));
-    SmartDashboard.putNumber("Joystick Raw X", m_driverJoystick.getX());
-    SmartDashboard.putNumber("Joystick Raw Y", m_driverJoystick.getY());
-    SmartDashboard.putNumber("Joystick Raw Z", m_driverJoystick.getZ());
+    //SmartDashboard.putData(CommandScheduler.getInstance());
         
 
     // Starts recording to data log
@@ -89,6 +89,9 @@ public class RobotContainer {
 
     // Configure the trigger bindings
     configureBindings();
+
+    driveForward.whileTrue(m_driveForward);
+    turnBot.whileTrue(m_turnBot);
 
     //Configure driving default
     m_robotDrive.setDefaultCommand(
