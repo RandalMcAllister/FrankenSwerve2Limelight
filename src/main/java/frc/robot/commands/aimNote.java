@@ -13,17 +13,17 @@ public class aimNote extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final DriveTrain m_subsystem;
 
+  
+  NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+  //NetworkTableEntry tx = table.getEntry("tx");
+  private float tx = 0;
     private double xSpeed;
     private double ySpeed;
     private double zRotation;
-    private float Kp = -0.1f
+    private float Kp = -0.1f;
     private float min_command = -0.05f;
-    private float tx = 0;
     private float heading_error = -tx;
     private float steering_adjust = 0.0f;
-    NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
-        NetworkTableEntry tx = table.getEntry("tx");
-
   /**
    * Creates a new ExampleCommand.
    *
@@ -43,7 +43,6 @@ public class aimNote extends CommandBase {
   @Override
   public void execute() {
     
-    tx = 0;
     heading_error = -tx;
 
     if (Math.abs(heading_error) > 1.0) 

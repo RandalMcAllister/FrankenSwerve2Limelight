@@ -8,6 +8,7 @@ import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.DriveForward;
 import frc.robot.commands.TurnBot;
+import frc.robot.commands.aimNote;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.SwerveModule;
@@ -56,7 +57,7 @@ public class RobotContainer {
 
   private final DriveForward m_driveForward = new DriveForward(m_robotDrive);
   private final TurnBot m_turnBot = new TurnBot(m_robotDrive);
-  //private final aimNote m_aimNote = new aimNote(m_robotDrive);
+  private final aimNote m_aimNote = new aimNote(m_robotDrive);
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final Joystick m_driverJoystick =
