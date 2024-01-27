@@ -25,6 +25,11 @@ public final class Constants {
     //public static final double kWheelRadius = 0.05845; //Need to update
     public static final int kAngleEncoderResolution = 360; //see https://www.andymark.com/products/hall-effect-two-channel-encoder
     public static final int kDriveEncoderResolution = 4096; // neo brushless settings in rev can id setting
+    public static final double kWheelRadius = 0.05845; //Need to update // in meters, 0.05845m is 2.30 in
+    //public static final int kAngleEncoderResolution = 7; //see https://www.andymark.com/products/hall-effect-two-channel-encoder
+    //public static final int kDriveEncoderResolution = 42; // neo brushless settings in rev can id setting
+                                                          // https://www.revrobotics.com/rev-21-1650/#:~:text=Hall%2DSensor%20Encoder%20Resolution%3A%2042%20counts%20per%20rev.
+                                                          // This is not used
   
     public static final double kModuleMaxAngularVelocity = DriveConstants.kMaxAngularSpeed;
     public static final double kModuleMaxAngularAcceleration =
