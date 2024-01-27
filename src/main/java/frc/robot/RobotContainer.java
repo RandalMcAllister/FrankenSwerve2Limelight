@@ -41,9 +41,6 @@ import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import java.util.List;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.revrobotics.RelativeEncoder;
 
 
 /**
@@ -69,14 +66,14 @@ public class RobotContainer {
   );
 
   
-  //private final RelativeEncoder m_FLDE = m_FLDMax.getEncoder();
-  //public double FrontLeftDriveEncoder = m_FLDE.getVelocity();
   
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure data on the SmartDashboard
     double counter = 0.0; SmartDashboard.putNumber("Counter", counter++);
+
+    
     //SmartDashboard.putData(CommandScheduler.getInstance());
         
 
