@@ -39,7 +39,7 @@ public class SwerveModule extends SubsystemBase {
 
   //public static final CANSparkMaxLowLevel.MotorType kBrushless;
 
-  private final PIDController m_turningPIDController = new PIDController(0.1, 0, 0);
+  private final PIDController m_turningPIDController = new PIDController(SwerveConstants.turnGainP, SwerveConstants.turnGainI, SwerveConstants.turnGainD);
 
   private double m_chassisAngularOffset = 0;
   private SwerveModuleState m_desiredState = new SwerveModuleState(0.0, new Rotation2d());
@@ -157,41 +157,6 @@ public class SwerveModule extends SubsystemBase {
     //m_driveMotor.set(driveOutput);
     m_turningMotor.set(turnOutput);
     
-    
-    
-    
-    
-/**
-    SwerveModuleState correctedDesiredState = new SwerveModuleState();
-    correctedDesiredState.speedMetersPerSecond = desiredState.speedMetersPerSecond;
-    correctedDesiredState.angle = desiredState.angle.plus(Rotation2d.fromRadians(m_chassisAngularOffset));
-
-    // Optimize the reference state to avoid spinning further than 90 degrees.
-       SwerveModuleState optimizedDesiredState = SwerveModuleState.optimize(correctedDesiredState,
-         new Rotation2d());
-
-
-    // var encoderRotation = new Rotation2d(m_turningEncoder.getDistance());
-    // Optimize the reference state to avoid spinning further than 90 degrees
-    //SwerveModuleState state = SwerveModuleState.optimize(desiredState, encoderRotation);
-    // Calculate the turning motor output from the turning PID controller.
-    
-    
-    // m_turningPIDController.setReference(optimizedDesiredState.angle.getRadians(), CANSparkMax.ControlType.kPosition);
-    final double turnFeedforward =
-        m_turnFeedforward.calculate(m_turningPIDController.getSetpoint()); 
-        
-    m_turningMotor.set(turnOutput + turnFeedforward);
-
-    /**if ((turnFeedforward + turnOutput + optimizedDesiredState.speedMetersPerSecond) != 0.0) //reduce debugging output
-    {
-      System.out.printf("%d: %f %f\n", m_driveMotorChannel, turnFeedforward + turnOutput, optimizedDesiredState.speedMetersPerSecond);
-      if (m_driveMotorChannel == 4) {System.out.printf("\n");} //add line after last motor
-    }*/
-    //System.out.printf("Distance %f\n", m_turningEncoder.getDistance());
-    //System.out.printf("Angle %f\n", correctedDesiredState.angle.getRadians());
-    //System.out.printf("Turning Motor Feedforward %f\n", turnFeedforward);*/
-
     m_desiredState = desiredState;
 
     

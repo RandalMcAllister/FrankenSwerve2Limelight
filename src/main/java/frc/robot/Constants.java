@@ -23,7 +23,7 @@ public final class Constants {
   
   public static class SwerveConstants{
     //public static final double kWheelRadius = 0.05845; //Need to update
-    public static final int kAngleEncoderResolution = 360; //see https://www.andymark.com/products/hall-effect-two-channel-encoder
+    public static final int kAngleEncoderResolution = 400; //see https://www.andymark.com/products/hall-effect-two-channel-encoder
     public static final int kDriveEncoderResolution = 4096; // neo brushless settings in rev can id setting
                                                           // https://www.revrobotics.com/rev-21-1650/#:~:text=Hall%2DSensor%20Encoder%20Resolution%3A%2042%20counts%20per%20rev.
                                                           // This is not used
@@ -43,6 +43,9 @@ public final class Constants {
     public static final double driveGainP = 0.1;
     public static final double driveGainI = 0;
     public static final double driveGainD = 0;
+    public static final double turnGainP = 0.3;
+    public static final double turnGainI = 0;
+    public static final double turnGainD = 0;
   }
 
   public static class DriveConstants {
