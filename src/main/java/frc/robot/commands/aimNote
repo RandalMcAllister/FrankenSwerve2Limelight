@@ -1,5 +1,10 @@
 package frc.robot.commands;
 
+
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
+
 import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
@@ -16,6 +21,8 @@ public class aimNote extends CommandBase {
     private float tx = 0;
     private float heading_error = -tx;
     private float steering_adjust = 0.0f;
+    NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+        NetworkTableEntry tx = table.getEntry("tx");
 
   /**
    * Creates a new ExampleCommand.
@@ -50,7 +57,7 @@ public class aimNote extends CommandBase {
             steering_adjust = Kp*heading_error - min_command;
         }
     } 
-    
+
     zRotation = steering_adjust;
 
     m_subsystem.drive(xSpeed, ySpeed, zRotation, false);
