@@ -56,7 +56,7 @@ public class RobotContainer {
 
   private final DriveForward m_driveForward = new DriveForward(m_robotDrive);
   private final TurnBot m_turnBot = new TurnBot(m_robotDrive);
-  private final aimNote m_aimNote = new aimNote(m_robotDrive);
+  //private final aimNote m_aimNote = new aimNote(m_robotDrive);
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final Joystick m_driverJoystick =
@@ -92,7 +92,7 @@ public class RobotContainer {
 
     driveForward.whileTrue(m_driveForward);
     turnBot.whileTrue(m_turnBot);
-    aimNote.whileTrue(m_aimNote);
+    //aimNote.whileTrue(m_aimNote);
 
     //Configure driving default
     m_robotDrive.setDefaultCommand(

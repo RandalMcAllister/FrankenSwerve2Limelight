@@ -11,6 +11,11 @@ public class aimNote extends CommandBase {
     private double xSpeed;
     private double ySpeed;
     private double zRotation;
+    private float Kp = -0.1f
+    private float min_command = -0.05f;
+    private float tx = 0;
+    private float heading_error = -tx;
+    private float steering_adjust = 0.0f;
 
   /**
    * Creates a new ExampleCommand.
@@ -31,6 +36,23 @@ public class aimNote extends CommandBase {
   @Override
   public void execute() {
     
+    tx = 0;
+    heading_error = -tx;
+
+    if (Math.abs(heading_error) > 1.0) 
+    {
+        if (heading_error < 0) 
+        {
+            steering_adjust = Kp*heading_error + min_command;
+        } 
+        else 
+        {
+            steering_adjust = Kp*heading_error - min_command;
+        }
+    } 
+    
+    zRotation = steering_adjust;
+
     m_subsystem.drive(xSpeed, ySpeed, zRotation, false);
   }
 
