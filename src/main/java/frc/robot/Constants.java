@@ -49,8 +49,8 @@ public final class Constants {
   }
 
   public static class DriveConstants {
-    public static final double kMaxSpeed = 3.0; // 3 meters per second
-    public static final double kMaxAngularSpeed = Math.PI; // 1/2 rotation per second
+    public static final double kMaxSpeed = 5.0; // 3 meters per second
+    public static final double kMaxAngularSpeed = (2 * Math.PI); // 1/2 rotation per second
     public static final double kDriveDeadband = 0.05;
 
     public static final double kFrontLeftChassisAngularOffset = 0;

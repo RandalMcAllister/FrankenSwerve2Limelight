@@ -113,6 +113,12 @@ public class DriveTrain extends SubsystemBase {
     SmartDashboard.putNumber("Front Right Encoder Count", TurnCountFR());
     SmartDashboard.putNumber("Back Right Encoder Count", TurnCountBR());
 
+    //Display Wheel orientations
+    SmartDashboard.putNumber("FL Wheel Angle", wheelAngleFL());
+    SmartDashboard.putNumber("FR Wheel Angle", wheelAngleFR());
+    SmartDashboard.putNumber("BL Wheel Angle", wheelAngleBL());
+    SmartDashboard.putNumber("BR Wheel Angle", wheelAngleBR());
+
   }
 
   public final double getOdometryAngle()
@@ -167,45 +173,60 @@ public class DriveTrain extends SubsystemBase {
     m_backRight.resetEncoders();
   }
 
+  // Measure turning encoder counts
   public double TurnCountFR() {
     double turningOut = m_frontRight.TurnOutput();
     return turningOut;
   }
-
   public double TurnCountFL() {
     double turningOut = m_frontLeft.TurnOutput();
     return turningOut;
   }
-
   public double TurnCountBR() {
     double turningOut = m_backRight.TurnOutput();
     return turningOut;
   }
-
   public double TurnCountBL() {
     double turningOut = m_backLeft.TurnOutput();
     return turningOut;
   }
 
+  // Measure driving wheel speeds
   public double DriveVelFL() {
     double driveVelFL = m_frontLeft.DriveOutput();
     return driveVelFL;
   }
-
   public double DriveVelFR() {
     double driveVelFR = m_frontRight.DriveOutput();
     return driveVelFR;
   }
-
   public double DriveVelBL() {
     double driveVelBL = m_backLeft.DriveOutput();
     return driveVelBL;
   }
-
   public double DriveVelBR() {
     double driveVelBR = m_backRight.DriveOutput();
     return driveVelBR;
   }
+
+  // Calculate wheel angles
+  public double wheelAngleFL() {
+    double angle = m_frontLeft.wheelAngle();
+    return angle;
+  }
+  public double wheelAngleFR() {
+    double angle = m_frontRight.wheelAngle();
+    return angle;
+  }
+  public double wheelAngleBL() {
+    double angle = m_backLeft.wheelAngle();
+    return angle;
+  }
+  public double wheelAngleBR() {
+    double angle = m_backRight.wheelAngle();
+    return angle;
+  }
+
 
   public void DriveForward() {
     m_backLeft.DriveForward();
