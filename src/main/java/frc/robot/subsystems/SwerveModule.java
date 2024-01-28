@@ -186,6 +186,12 @@ public class SwerveModule extends SubsystemBase {
     m_driveMotor.set(0);
     m_turningMotor.set(0);
   }
+
+  public double wheelAngle() {
+    var angle = new Rotation2d(m_turningEncoder.getDistance());
+    double angleDeg = angle.getDegrees();
+    return angleDeg;
+  }
  
   @Override
   public void periodic() {
