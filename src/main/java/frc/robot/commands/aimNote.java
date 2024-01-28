@@ -1,6 +1,8 @@
 package frc.robot.commands;
 
 
+import java.security.Key;
+
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -15,15 +17,15 @@ public class aimNote extends CommandBase {
 
   
   NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
-  //NetworkTableEntry tx = table.getEntry("tx");
-  private float tx = 0;
+    NetworkTableEntry tx = table.getEntry("tx");
     private double xSpeed;
     private double ySpeed;
     private double zRotation;
-    private float Kp = -0.1f;
-    private float min_command = -0.05f;
-    private float heading_error = -tx;
-    private float steering_adjust = 0.0f;
+    private double Kp = -0.1f;
+    private double min_command = -0.05f;
+    private double heading_error = 0;
+    private double steering_adjust = 0.0f;
+    
   /**
    * Creates a new ExampleCommand.
    *
@@ -43,7 +45,8 @@ public class aimNote extends CommandBase {
   @Override
   public void execute() {
     
-    heading_error = -tx;
+    tx = table.getEntry("tx");
+    heading_error = tx.getDouble(0.0);;
 
     if (Math.abs(heading_error) > 1.0) 
     {
@@ -59,7 +62,7 @@ public class aimNote extends CommandBase {
 
     zRotation = steering_adjust;
 
-    m_subsystem.drive(xSpeed, ySpeed, zRotation, false);
+    m_subsystem.drive(xSpeed, ySpeed, zRotation, true);
   }
 
   // Called once the command ends or is interrupted.
