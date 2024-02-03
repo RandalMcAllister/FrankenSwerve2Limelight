@@ -98,7 +98,7 @@ public class RobotContainer {
                 -MathUtil.applyDeadband(m_driverJoystick.getY(), DriveConstants.kDriveDeadband),
                 -MathUtil.applyDeadband(m_driverJoystick.getX(), DriveConstants.kDriveDeadband),
                 -MathUtil.applyDeadband(m_driverJoystick.getZ(), DriveConstants.kDriveDeadband),
-                true), m_robotDrive)
+                DriveConstants.kTeleField), m_robotDrive)
         );
   
   }
