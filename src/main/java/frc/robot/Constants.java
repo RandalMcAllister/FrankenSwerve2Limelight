@@ -58,6 +58,7 @@ public final class Constants {
     public static final double kBackLeftChassisAngularOffset = 0;
     public static final double kBackRightChassisAngularOffset = 0;
 
+    public static final boolean kTeleField = true;
   }
 
   public static class ControlSystem {
