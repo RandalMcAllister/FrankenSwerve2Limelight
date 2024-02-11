@@ -21,10 +21,10 @@ public class aimNote extends CommandBase {
     private double xSpeed;
     private double ySpeed;
     private double zRotation;
-    private double Kp = -0.1f;
-    private double min_command = -0.05f;
+    private double Kp = -0.1;
+    private double min_command = -0.05;
     private double heading_error = 0;
-    private double steering_adjust = 0.0f;
+    private double steering_adjust = 0.0;
     
   /**
    * Creates a new ExampleCommand.
