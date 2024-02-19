@@ -19,14 +19,13 @@ public class aimAmp extends CommandBase {
   private DriverStation driveStation;
   Optional<Alliance> ally = DriverStation.getAlliance();
   if (ally.isPresent()) {
-    if (ally.get() == Alliance.Red) {
-        
+    if (ally.get() == Alliance.Red) {  
+      setPipelineIndex(String limelightName, int pipelineIndex)
 
     } else if (ally.get() == Alliance.Blue) {
-    
+      setPipelineIndex(String limelightName, int pipelineIndex)
 
     }
-    
   } else {}
 */
   

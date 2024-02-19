@@ -19,16 +19,15 @@ public class aimSpeaker extends CommandBase {
   Optional<Alliance> ally = DriverStation.getAlliance();
   if (ally.isPresent()) {
     if (ally.get() == Alliance.Red) {
-        
+      setPipelineIndex(String limelightName, int pipelineIndex)
 
     } else if (ally.get() == Alliance.Blue) {
-    
+      setPipelineIndex(String limelightName, int pipelineIndex)
 
     }
-    
   } else {}
   */
-  
+
   NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
     NetworkTableEntry tx = table.getEntry("tx");
     private double xSpeed;
