@@ -6,7 +6,7 @@ import java.security.Key;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-
+import frc.robot.LimelightHelpers;
 import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
@@ -14,22 +14,12 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class aimSpeaker extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final DriveTrain m_subsystem;
-/* 
-  private DriverStation driveStation;
-  Optional<Alliance> ally = DriverStation.getAlliance();
-  if (ally.isPresent()) {
-    if (ally.get() == Alliance.Red) {
-      setPipelineIndex(String limelightName, int pipelineIndex)
 
-    } else if (ally.get() == Alliance.Blue) {
-      setPipelineIndex(String limelightName, int pipelineIndex)
-
-    }
-  } else {}
-  */
-
+  /* 
   NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
     NetworkTableEntry tx = table.getEntry("tx");
+    */
+
     private double xSpeed;
     private double ySpeed;
     private double zRotation;
@@ -56,10 +46,25 @@ public class aimSpeaker extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
-    tx = table.getEntry("tx");
-    heading_error = tx.getDouble(0.0);;
 
+    
+/* 
+  private DriverStation driveStation;
+  Optional<Alliance> ally = DriverStation.getAlliance();
+  if (ally.isPresent()) {
+    if (ally.get() == Alliance.Red) {
+      setPipelineIndex(String limelightName, int pipelineIndex)
+
+    } else if (ally.get() == Alliance.Blue) {
+      setPipelineIndex(String limelightName, int pipelineIndex)
+
+    }
+  } else {}
+  */
+    
+    double tx = LimelightHelpers.getTX("limelight");
+    heading_error = -tx;
+    
     if (Math.abs(heading_error) > 1.0) 
     {
         if (heading_error < 0) 
