@@ -8,7 +8,7 @@ import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.DriveForward;
 import frc.robot.commands.TurnBot;
-import frc.robot.commands.aimNote;
+import frc.robot.commands.aimSpeaker;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.SwerveModule;
@@ -57,7 +57,7 @@ public class RobotContainer {
 
   private final DriveForward m_driveForward = new DriveForward(m_robotDrive);
   private final TurnBot m_turnBot = new TurnBot(m_robotDrive);
-  private final aimNote m_aimNote = new aimNote(m_robotDrive);
+  private final aimSpeaker m_aimAmp = new aimSpeaker(m_robotDrive);
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final Joystick m_driverJoystick =
@@ -66,7 +66,7 @@ public class RobotContainer {
   private final JoystickButton driveForward = new JoystickButton(m_driverJoystick, 11);
   private final JoystickButton turnBot = new JoystickButton(m_driverJoystick, 9
   );
-  private final JoystickButton aimNote = new JoystickButton(m_driverJoystick, 7
+  private final JoystickButton aimAmp = new JoystickButton(m_driverJoystick, 7
   );
 
   
@@ -93,7 +93,7 @@ public class RobotContainer {
 
     driveForward.whileTrue(m_driveForward);
     turnBot.whileTrue(m_turnBot);
-    //aimNote.whileTrue(m_aimNote);
+    //aimAmp.whileTrue(m_aimAmp);
 
     //Configure driving default
     m_robotDrive.setDefaultCommand(
