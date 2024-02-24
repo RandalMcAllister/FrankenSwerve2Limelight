@@ -1,8 +1,10 @@
 package frc.robot.commands;
 
 
-import java.security.Key;
 
+import java.security.Key;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -23,10 +25,13 @@ public class aimSpeaker extends CommandBase {
     private double xSpeed;
     private double ySpeed;
     private double zRotation;
+
+    /* 
     private double Kp = -0.1;
     private double min_command = -0.05;
     private double heading_error = 0;
     private double steering_adjust = 0.0;
+    */
     
   /**
    * Creates a new ExampleCommand.
@@ -48,21 +53,20 @@ public class aimSpeaker extends CommandBase {
   public void execute() {
 
     
-/* 
-  private DriverStation driveStation;
-  Optional<Alliance> ally = DriverStation.getAlliance();
-  if (ally.isPresent()) {
-    if (ally.get() == Alliance.Red) {
-      setPipelineIndex(String limelightName, int pipelineIndex)
+ 
+    if (DriverStation.getAlliance() == Alliance.Red) {
+      LimelightHelpers.setPipelineIndex("limelight", 2);
 
-    } else if (ally.get() == Alliance.Blue) {
-      setPipelineIndex(String limelightName, int pipelineIndex)
+    } else if (DriverStation.getAlliance() == Alliance.Blue) {
+      LimelightHelpers.setPipelineIndex("limelight", 3);
 
-    }
-  } else {}
-  */
+    } else {}
+  
+  
     
-    double tx = LimelightHelpers.getTX("limelight");
+    double zRotation = LimelightHelpers.getTX("limelight");
+    
+    /*
     heading_error = -tx;
     
     if (Math.abs(heading_error) > 1.0) 
@@ -76,8 +80,11 @@ public class aimSpeaker extends CommandBase {
             steering_adjust = Kp*heading_error - min_command;
         }
     } 
+      
+
 
     zRotation = steering_adjust;
+    */
 
     m_subsystem.drive(xSpeed, ySpeed, zRotation, true);
   }
